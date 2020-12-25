@@ -1,0 +1,39 @@
+{
+  "name": "examples-remark-plugin-vfm-micromark",
+  "description": "Testing the remark (with micromark) implementation used by VFM.",
+  "version": "1.0.0",
+  "author": "akabeko",
+  "license": "MIT",
+  "private": true,
+  "main": "index.js",
+  "keywords": [
+    "remark"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/akabekobeko/examples-remark-plugin-micromark.git"
+  },
+  "homepage": "https://github.com/akabekobeko/examples-remark-plugin-micromark#readme",
+  "bugs": {
+    "url": "https://github.com/akabekobeko/examples-remark-plugin-micromark/issues"
+  },
+  "scripts": {
+    "test": "jest",
+    "start": "npm run watch",
+    "tsc": "tsc --noEmit",
+    "build": "tsc",
+    "watch": "tsc -w",
+    "prepare": "npm run build"
+  },
+  "dependencies": {
+    "micromark": "^2.11.2"
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.19",
+    "@types/node": "^14.14.16",
+    "jest": "^26.6.3",
+    "remark-parse": "^9.0.0",
+    "ts-jest": "^26.4.4",
+    "typescript": "^4.1.3"
+  }
+}
