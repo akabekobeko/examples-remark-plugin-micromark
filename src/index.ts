@@ -1,4 +1,4 @@
-import { Attacher, Transformer } from 'unified'
+import { Transformer, Pluggable } from 'unified'
 import visit from 'unist-util-visit-parents'
 
 const transformer: Transformer = (tree, _file) => {
@@ -15,6 +15,10 @@ const transformer: Transformer = (tree, _file) => {
   })
 }
 
-const mdast: Attacher = () => transformer
+const mdast: Pluggable = function () {
+  const data = this.data()
+  console.log(data)
+  return transformer
+}
 
 export default mdast
