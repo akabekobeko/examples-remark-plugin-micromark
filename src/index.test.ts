@@ -6,17 +6,18 @@ import remark2rehype from 'remark-rehype'
 import html from 'rehype-stringify'
 import raw from 'rehype-raw'
 import inspect from 'unist-util-inspect'
-import { mdast as ruby } from './index'
+import { mdast as rubyMdast, handler as ruby } from './index'
 
 describe('ruby', () => {
   const processor = unified()
-    .use([markdown, gfm, ruby])
+    .use([markdown, gfm, rubyMdast])
     .data('settings', { position: false })
     .use([
       [
         remark2rehype,
         {
-          allowDangerousHtml: true
+          allowDangerousHtml: true,
+          handlers: { ruby }
         }
       ],
       raw
@@ -25,8 +26,8 @@ describe('ruby', () => {
     .freeze()
 
   it('simple ruby', () => {
-    const md = '**sample{a|b}** **test**aaa\nbbbbbbb'
-    const html = '<p><ruby>a<rt>b</rt></ruby></p>'
+    const md = '{行|ぎょう}'
+    const html = '<p><ruby>行<rt>ぎょう</rt></ruby></p>'
     const mdastString = `
 root[1]
 └─0 paragraph[1]
@@ -35,9 +36,8 @@ root[1]
         └─0 text "a"
 `.trim()
 
-    //processor.processSync(md)
-    console.log(String(processor.processSync(md)))
-    //expect(String(processor.processSync(md))).toBe(html)
+    console.log(inspect(processor.parse(md), { showPositions: false }))
+    expect(String(processor.processSync(md))).toBe(html)
     //expect(inspect.noColor(processor.parse(md))).toBe(mdastString)
   })
 })
