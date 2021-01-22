@@ -27,7 +27,6 @@
   },
   "dependencies": {
     "mdast-util-to-hast": "^10.1.1",
-    "micromark": "^2.11.2",
     "unist-util-visit": "^2.0.3",
     "unist-util-visit-parents": "^3.1.1"
   },
