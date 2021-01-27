@@ -1,4 +1,3 @@
-import assert from 'assert'
 import unified from 'unified'
 import markdown from 'remark-parse'
 import gfm from 'remark-parse'
