@@ -1,8 +1,8 @@
 import { Transformer, Plugin } from 'unified'
 import { Handler } from 'mdast-util-to-hast'
-import all from 'mdast-util-to-hast/lib/all'
-import u from 'unist-builder'
-import visit from 'unist-util-visit'
+import { all } from 'mdast-util-to-hast'
+import { u } from 'unist-builder'
+import { visit } from 'unist-util-visit'
 import { MdastNode, Parent } from './mdast-node'
 
 const visitor = (
@@ -58,7 +58,7 @@ const visitor = (
 }
 
 const transformer: Transformer = (tree) => {
-  visit<MdastNode>(tree, 'text', visitor)
+  visit<MdastNode>(tree as any, 'text' as any, visitor as any)
 }
 
 export const mdast: Plugin = function () {
@@ -69,7 +69,7 @@ export const handler: Handler = (h, node) => {
   if (!node.data) node.data = {}
   const rtNode = h(
     {
-      type: 'element'
+      type: 'element' as any
     },
     'rt',
     [u('text', node.data.rubyText as string)]
