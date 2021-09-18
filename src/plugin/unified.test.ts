@@ -4,7 +4,7 @@ import remarkParse from 'remark-parse'
 import remark2rehype from 'remark-rehype'
 import rehypeStringify from 'rehype-stringify'
 import rehypeRaw from 'rehype-raw'
-import { mdast as mdastRuby, handler as ruby } from './index'
+import { mdast as mdastRuby, handler as ruby } from './unified'
 
 describe('ruby', () => {
   const processor = unified()
